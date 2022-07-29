@@ -147,11 +147,11 @@ class usHospitalModelInput(BaseModel):
     x : float
     y : float
 
-@app.post("/usHospitals")
-def usHospitalAPI(input_parameters: usHospitalModelInput):
-    input_data = input_parameters.json()
-    input_dictionary = json.loads(input_data)
-    point = (input_dictionary['x'],input_dictionary['y'])
-    hospitals = usHospital(point)
+# @app.post("/usHospitals")
+# def usHospitalAPI(input_parameters: usHospitalModelInput):
+#     input_data = input_parameters.json()
+#     input_dictionary = json.loads(input_data)
+#     point = (input_dictionary['x'],input_dictionary['y'])
+#     hospitals = usHospital(point)
 
-    return hospitals
+#     return hospitals

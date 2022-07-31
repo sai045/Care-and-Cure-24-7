@@ -22,28 +22,6 @@ class diabetes_model_input(BaseModel):
 # loading the saved model
 diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 
-def distance(a,b):
-    a = np.array(a)
-    b = np.array(b)
-
-    dis = np.sum(np.square(a-b))
-    return dis
-
-def usHospital(point):
-    us_hospitals = pd.read_csv("US_Hospitals.csv")
-    data = us_hospitals.drop(labels=['OBJECTID','ID','NAME','ADDRESS','CITY','STATE','ZIP','ZIP4','TELEPHONE','TYPE','STATUS','POPULATION','COUNTY','COUNTYFIPS','COUNTRY','LATITUDE','LONGITUDE','NAICS_CODE','NAICS_DESC','SOURCE','SOURCEDATE','VAL_METHOD','VAL_DATE','WEBSITE','STATE_ID','ALT_NAME','ST_FIPS','OWNER','TTL_STAFF','BEDS','TRAUMA','HELIPAD'],axis=1)
-    all_dist = {}
-    for i in range(len(data)):
-        d = (data.iloc[i].X,data.iloc[i].Y)
-        all_dist[i] = distance(d,point)
-    topNeighbours = dict(sorted(all_dist.items(), key=lambda item: item[1]))
-    topIndices = list(topNeighbours.keys())
-    neighbors= []
-    for i in topIndices[:7]:
-        neighbors.append(us_hospitals.iloc[i])
-    return neighbors
-
-
 @app.post('/diabetes_prediction')
 def diabetes_predd(input_parameters : diabetes_model_input):
     
@@ -179,5 +157,6 @@ def indiaHospitalAPI(input_parameters: indiaHospitalModelInput):
     pincode = input_dictionary['pincode']
     india = pd.read_csv("HospitalsInIndia.csv")
     india = india.drop(labels=['Unnamed: 0'],axis=1)
-    indiaNeighbour = india.query("Pincode == 800016.0")
-    return india.iloc[0]
+    # indiaNeighbour = india.query("Pincode == 800016.0")
+    indiaNeighbour = india.loc[india['Pincode'] == pincode]
+    return indiaNeighbour.iloc[0]

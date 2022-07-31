@@ -174,5 +174,5 @@ def indiaHospitalAPI(input_parameters: indiaHospitalModelInput):
     pincode = input_dictionary['pincode']
 
     hospitals = indiaHospital(pincode)
-    return  hospitals
+    return  "Hospital " + hospitals.iloc[0].Hospital + " State " + hospitals.iloc[0].State + " City " + hospitals.iloc[0].City + " LocalAddress " + hospitals.iloc[0].LocalAddress
 

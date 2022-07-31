@@ -37,11 +37,11 @@ def usHospital(point):
         d = (data.iloc[i].X,data.iloc[i].Y)
         all_dist[i] = distance(d,point)
     topNeighbours = dict(sorted(all_dist.items(), key=lambda item: item[1]))
-    neighbours = []
     topIndices = list(topNeighbours.keys())
+    neighbors= []
     for i in topIndices[:7]:
-        neighbours.append(us_hospitals.iloc[i])
-    return neighbours
+        neighbors.append(us_hospitals.iloc[i])
+    return neighbors
 
 
 @app.post('/diabetes_prediction')
@@ -152,9 +152,20 @@ def usHospitalAPI(input_parameters: usHospitalModelInput):
     input_data = input_parameters.json()
     input_dictionary = json.loads(input_data)
     point = (input_dictionary['x'],input_dictionary['y'])
-    hospitals = usHospital(point)
-
-    return hospitals
+    us_hospitals = pd.read_csv("US_Hospitals.csv")
+    us_hospitals = us_hospitals.drop(labels=['OBJECTID','ID','ZIP','ZIP4','TELEPHONE','STATUS','POPULATION','COUNTY','COUNTYFIPS','COUNTRY','NAICS_CODE','NAICS_DESC','SOURCE','SOURCEDATE','VAL_METHOD','VAL_DATE','STATE_ID','ALT_NAME','ST_FIPS','OWNER','TTL_STAFF','BEDS','TRAUMA','HELIPAD'],axis=1)
+    all_dist = {}
+    for i in range(len(us_hospitals)):
+        d = (us_hospitals.iloc[i].X,us_hospitals.iloc[i].Y)
+        d = np.array(d)
+        dis = np.sum(np.square(point-d))
+        all_dist[i] = dis
+    topNeighbours = dict(sorted(all_dist.items(), key=lambda item: item[1]))
+    neighbours = []
+    topIndices = list(topNeighbours.keys())
+    for i in topIndices[:7]:
+        neighbours.append(us_hospitals.iloc[i])
+    return neighbours
 
 
 class indiaHospitalModelInput(BaseModel):
@@ -166,8 +177,7 @@ def indiaHospitalAPI(input_parameters: indiaHospitalModelInput):
     input_data = input_parameters.json()
     input_dictionary = json.loads(input_data)
     pincode = input_dictionary['pincode']
-
     india = pd.read_csv("HospitalsInIndia.csv")
     india = india.drop(labels=['Unnamed: 0'],axis=1)
     indiaNeighbour = india.query("Pincode == 800016.0")
-    return indiaNeighbour.iloc[0]
+    return india.iloc[0]

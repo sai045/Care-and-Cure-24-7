@@ -30,7 +30,7 @@ def distance(a,b):
     return dis
 
 def usHospital(point):
-    us_hospitals = pd.read_csv("Hospitals\US_Hospitals.csv")
+    us_hospitals = pd.read_csv("../Hospitals/US_Hospitals.csv")
     data = us_hospitals.drop(labels=['OBJECTID','ID','NAME','ADDRESS','CITY','STATE','ZIP','ZIP4','TELEPHONE','TYPE','STATUS','POPULATION','COUNTY','COUNTYFIPS','COUNTRY','LATITUDE','LONGITUDE','NAICS_CODE','NAICS_DESC','SOURCE','SOURCEDATE','VAL_METHOD','VAL_DATE','WEBSITE','STATE_ID','ALT_NAME','ST_FIPS','OWNER','TTL_STAFF','BEDS','TRAUMA','HELIPAD'],axis=1)
     all_dist = {}
     for i in range(len(data)):
@@ -147,11 +147,11 @@ class usHospitalModelInput(BaseModel):
     x : float
     y : float
 
-# @app.post("/usHospitals")
-# def usHospitalAPI(input_parameters: usHospitalModelInput):
-#     input_data = input_parameters.json()
-#     input_dictionary = json.loads(input_data)
-#     point = (input_dictionary['x'],input_dictionary['y'])
-#     hospitals = usHospital(point)
+@app.post("/usHospitals")
+def usHospitalAPI(input_parameters: usHospitalModelInput):
+    input_data = input_parameters.json()
+    input_dictionary = json.loads(input_data)
+    point = (input_dictionary['x'],input_dictionary['y'])
+    hospitals = usHospital(point)
 
-#     return hospitals
+    return hospitals

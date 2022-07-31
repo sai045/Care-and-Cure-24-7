@@ -30,7 +30,7 @@ def distance(a,b):
     return dis
 
 def usHospital(point):
-    us_hospitals = pd.read_csv("../Hospitals/US_Hospitals.csv")
+    us_hospitals = pd.read_csv("US_Hospitals.csv")
     data = us_hospitals.drop(labels=['OBJECTID','ID','NAME','ADDRESS','CITY','STATE','ZIP','ZIP4','TELEPHONE','TYPE','STATUS','POPULATION','COUNTY','COUNTYFIPS','COUNTRY','LATITUDE','LONGITUDE','NAICS_CODE','NAICS_DESC','SOURCE','SOURCEDATE','VAL_METHOD','VAL_DATE','WEBSITE','STATE_ID','ALT_NAME','ST_FIPS','OWNER','TTL_STAFF','BEDS','TRAUMA','HELIPAD'],axis=1)
     all_dist = {}
     for i in range(len(data)):
@@ -171,7 +171,7 @@ def indiaHospitalAPI(input_parameters: indiaHospitalModelInput):
     input_dictionary = json.loads(input_data)
     pincode = input_dictionary['pincode']
 
-    india = pd.read_csv("../Hospitals/HospitalsInIndia.csv")
+    india = pd.read_csv("HospitalsInIndia.csv")
     india = india.drop(labels=['Unnamed: 0'],axis=1)
     indiaNeighbour = india.query("Pincode == 800016.0")
     hospitalTest = "Hospital " + indiaNeighbour.iloc[0].Hospital + " State " + indiaNeighbour.iloc[0].State + " City " + indiaNeighbour.iloc[0].City + " LocalAddress " + indiaNeighbour.iloc[0].LocalAddress

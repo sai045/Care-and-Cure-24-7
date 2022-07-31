@@ -39,7 +39,7 @@ def usHospital(point):
     topNeighbours = dict(sorted(all_dist.items(), key=lambda item: item[1]))
     neighbours = []
     topIndices = list(topNeighbours.keys())
-    for i in topIndices:
+    for i in topIndices[:7]:
         neighbours.append(us_hospitals.iloc[i])
     return neighbours
 
@@ -154,7 +154,11 @@ def usHospitalAPI(input_parameters: usHospitalModelInput):
     point = (input_dictionary['x'],input_dictionary['y'])
     hospitals = usHospital(point)
 
-    return hospitals
+    st = ""
+    for i in hospitals:
+        st += i.NAME + ","
+    
+    return st
 
 
 class indiaHospitalModelInput(BaseModel):
@@ -171,5 +175,4 @@ def indiaHospitalAPI(input_parameters: indiaHospitalModelInput):
     india = india.drop(labels=['Unnamed: 0'],axis=1)
     indiaNeighbour = india.query("Pincode == 800016.0")
     hospitalTest = "Hospital " + indiaNeighbour.iloc[0].Hospital + " State " + indiaNeighbour.iloc[0].State + " City " + indiaNeighbour.iloc[0].City + " LocalAddress " + indiaNeighbour.iloc[0].LocalAddress
-    # return hospitalTest
-    return "Yo"
+    return hospitalTest

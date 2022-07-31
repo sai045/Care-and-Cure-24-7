@@ -174,5 +174,5 @@ def indiaHospitalAPI(input_parameters: indiaHospitalModelInput):
     india = pd.read_csv("HospitalsInIndia.csv")
     india = india.drop(labels=['Unnamed: 0'],axis=1)
     indiaNeighbour = india.query("Pincode == 800016.0")
-    hospitalTest = "Hospital " + indiaNeighbour.iloc[0].Hospital + " State " + indiaNeighbour.iloc[0].State + " City " + indiaNeighbour.iloc[0].City + " LocalAddress " + indiaNeighbour.iloc[0].LocalAddress
-    return hospitalTest
+    # hospitalTest = "Hospital " + indiaNeighbour.iloc[0].Hospital + " State " + indiaNeighbour.iloc[0].State + " City " + indiaNeighbour.iloc[0].City + " LocalAddress " + indiaNeighbour.iloc[0].LocalAddress
+    return indiaNeighbour.iloc[0]

@@ -43,6 +43,12 @@ def usHospital(point):
         neighbours.append(us_hospitals.iloc[i])
     return neighbours
 
+def indiaHospital(pincode):
+    india = pd.read_csv("../Hospitals/HospitalsInIndia.csv")
+    india = india.drop(labels=['Unnamed: 0'],axis=1)
+    indiaNeighbour = india.query("Pincode == 800016.0")
+    return indiaNeighbour
+
 
 @app.post('/diabetes_prediction')
 def diabetes_predd(input_parameters : diabetes_model_input):
@@ -155,3 +161,18 @@ def usHospitalAPI(input_parameters: usHospitalModelInput):
     hospitals = usHospital(point)
 
     return hospitals
+
+
+class indiaHospitalModelInput(BaseModel):
+
+    pincode: int
+
+@app.post("/indiaHospitals")
+def indiaHospitalAPI(input_parameters: indiaHospitalModelInput):
+    input_data = input_parameters.json()
+    input_dictionary = json.loads(input_data)
+    pincode = input_dictionary['pincode']
+
+    hospitals = indiaHospital(pincode)
+    return  hospitals
+

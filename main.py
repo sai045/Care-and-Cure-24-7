@@ -55,9 +55,9 @@ def diabetes_predd(input_parameters: diabetes_model_input):
     prediction = diabetes_model.predict([input_list])
 
     if (prediction[0] == 0):
-        return 'The person is not diabetic'
+        return "Hooray you're not diabetic"
     else:
-        return 'The person is diabetic'
+        return 'Sorry to say this, but you are diabetic'
 
 
 disease_model = pickle.load(open('disease.sav', 'rb'))

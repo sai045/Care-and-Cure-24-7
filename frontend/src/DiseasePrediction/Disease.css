@@ -1,0 +1,18 @@
+.box {
+  width: 50%;
+  margin: auto;
+  height: 100%;
+}
+
+.disease {
+  padding: 0;
+  margin: 25px 0;
+}
+
+.disease img:hover {
+  cursor: pointer;
+}
+
+.regions {
+  margin-top: 30vh;
+}

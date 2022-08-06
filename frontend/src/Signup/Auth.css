@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
+
+* {
+  box-sizing: border-box;
+}
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #167bff;
+}
+
+.loginForm {
+  width: 33%;
+  position: absolute;
+  left: 78px;
+  top: 213px;
+}
+
+.loginQuote {
+  width: 33%;
+  position: absolute;
+  right: 78px;
+  top: 213px;
+  height: 310px;
+}
+
+.loginQuote h2 {
+  height: 100%;
+  margin-top: 20%;
+}
+
+.signupForm {
+  width: 33%;
+  position: absolute;
+  left: 78px;
+  top: 150px;
+}
+
+.signupQuote {
+  width: 33%;
+  position: absolute;
+  right: 78px;
+  top: 150px;
+  height: 450px;
+}
+
+.signupQuote h2 {
+  height: 100%;
+  margin-top: 35%;
+}

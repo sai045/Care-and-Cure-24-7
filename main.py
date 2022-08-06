@@ -161,7 +161,7 @@ def usHospitalAPI(input_parameters: usHospitalModelInput):
     topNeighbours = dict(sorted(all_dist.items(), key=lambda item: item[1]))
     neighbours = []
     topIndices = list(topNeighbours.keys())
-    for i in topIndices[:7]:
+    for i in topIndices[:6]:
         neighbours.append(us_hospitals.iloc[i])
     return neighbours
 

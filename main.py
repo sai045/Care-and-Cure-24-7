@@ -135,7 +135,7 @@ def heart_pred(input_parameters: heart_model_input):
     if (prediction[0] == 1):
         return 'Heart Disease is Present'
     else:
-        return 'Heart Disease is not Present'
+        return 'Hooray!!! Heart Disease is not Present'
 
 
 class usHospitalModelInput(BaseModel):

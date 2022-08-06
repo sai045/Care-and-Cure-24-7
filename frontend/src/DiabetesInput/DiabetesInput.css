@@ -1,0 +1,23 @@
+.diabetesForm {
+  width: 40%;
+  margin: auto;
+  margin-top: 11%;
+  padding: 57px 0;
+  background-color: aliceblue;
+  position: relative;
+}
+
+.diabetesForm label {
+  position: absolute;
+  left: 4%;
+}
+
+.diabetesForm input {
+  border: none;
+  position: absolute;
+  right: 10%;
+}
+
+.diabetesForm button {
+  width: 120px;
+}

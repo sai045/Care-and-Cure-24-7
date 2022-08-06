@@ -1,0 +1,43 @@
+.HeartForm {
+  width: 40%;
+  margin: auto;
+  margin-top: 7%;
+  padding: 57px 0;
+  background-color: aliceblue;
+  position: relative;
+}
+
+.HeartForm label {
+  position: absolute;
+  left: 4%;
+}
+
+.HeartForm input {
+  border: none;
+  position: absolute;
+  right: 10%;
+}
+
+.HeartForm button {
+  width: 120px;
+}
+
+.HeartForm select {
+  border: none;
+  position: absolute;
+  right: 10%;
+  width: 198.4px;
+  padding: 2px;
+}
+
+.indiaButton {
+  margin-top: 55px;
+}
+
+.usHospital:hover {
+  cursor: pointer;
+}
+
+.usHospitals {
+  margin: 4% 2%;
+}

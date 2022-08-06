@@ -1,0 +1,33 @@
+.diseaseForm {
+  width: 90%;
+  margin: auto;
+  margin-top: 6%;
+  padding: 57px 0;
+  background-color: aliceblue;
+  position: relative;
+}
+
+.diseaseForm button {
+  width: 120px;
+  margin-top: 36px;
+}
+
+.diseaseInput {
+  width: 25%;
+  display: inline-block;
+  position: relative;
+}
+
+.diseaseInput input {
+  position: absolute;
+  right: 30px;
+}
+
+.diseaseInput label {
+  position: absolute;
+  left: 20px;
+}
+
+.message {
+  margin-top: 15px;
+}

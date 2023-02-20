@@ -22,7 +22,7 @@ const HeartInput = () => {
   const predict = async () => {
     try {
       const response = await fetch(
-        "https://ml-health-045.herokuapp.com/heart_prediction",
+        "https://care-and-cure-api.onrender.com/heart_prediction",
         {
           method: "POST",
           "Access-Control-Allow-Origin": "*",

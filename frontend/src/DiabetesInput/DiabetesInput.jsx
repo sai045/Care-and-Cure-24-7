@@ -17,7 +17,7 @@ const DiabetesSymptomsInput = () => {
   const predict = async () => {
     try {
       const response = await fetch(
-        "https://ml-health-045.herokuapp.com/diabetes_prediction",
+        "https://care-and-cure-api.onrender.com/diabetes_prediction",
         {
           method: "POST",
           "Access-Control-Allow-Origin": "*",

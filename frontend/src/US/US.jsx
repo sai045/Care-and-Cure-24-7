@@ -9,7 +9,7 @@ const US = () => {
   const predict = async () => {
     try {
       const response = await fetch(
-        "https://ml-health-045.herokuapp.com/usHospitals",
+        "https://care-and-cure-api.onrender.com/usHospitals",
         {
           method: "POST",
           "Access-Control-Allow-Origin": "*",

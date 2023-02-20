@@ -10,7 +10,7 @@ const DiseaseSymptomsInput = () => {
   const predict = async () => {
     try {
       const response = await fetch(
-        "https://ml-health-045.herokuapp.com/disease_prediction",
+        "https://care-and-cure-api.onrender.com/disease_prediction",
         {
           method: "POST",
           "Access-Control-Allow-Origin": "*",

@@ -8,7 +8,7 @@ const India = () => {
   const predict = async () => {
     try {
       const response = await fetch(
-        "https://ml-health-045.herokuapp.com/indiaHospitals",
+        "https://care-and-cure-api.onrender.com/indiaHospitals",
         {
           method: "POST",
           "Access-Control-Allow-Origin": "*",
